@@ -1,5 +1,0 @@
-SIGN | CLASS
-+ | operator.Plus
-- | operator.Minus
-* | operator.Times
-/ | operator.Divide

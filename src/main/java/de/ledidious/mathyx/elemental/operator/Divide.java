@@ -7,4 +7,14 @@ public class Divide implements BinaryOperator {
     public Decimal combine(Decimal dec0, Decimal dec1) {
         return new Decimal(dec0.getVal() / dec1.getVal());
     }
+
+    @Override
+    public String getSign() {
+        return "/";
+    }
+
+    @Override
+    public String[] getAltSigns() {
+        return new String[]{"÷"};
+    }
 }
