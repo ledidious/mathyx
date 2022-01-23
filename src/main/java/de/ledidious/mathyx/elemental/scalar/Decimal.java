@@ -6,6 +6,18 @@ public class Decimal {
     // Fields
     // ================================================
 
+    public static final Decimal ZERO = new Decimal(0);
+    public static final Decimal ONE = new Decimal(1);
+    public static final Decimal TWO = new Decimal(2);
+    public static final Decimal THREE = new Decimal(3);
+    public static final Decimal FOUR = new Decimal(4);
+    public static final Decimal FIVE = new Decimal(5);
+    public static final Decimal SIX = new Decimal(6);
+    public static final Decimal SEVEN = new Decimal(7);
+    public static final Decimal EIGHT = new Decimal(8);
+    public static final Decimal NINE = new Decimal(9);
+    public static final Decimal TEN = new Decimal(10);
+
     private final double val;
 
     // ================================================
