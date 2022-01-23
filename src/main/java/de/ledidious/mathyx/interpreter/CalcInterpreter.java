@@ -3,19 +3,27 @@ package de.ledidious.mathyx.interpreter;
 import de.ledidious.mathyx.elemental.operator.Operator;
 
 import java.io.File;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class CalcInterpreter {
+
+    // ================================================
+    // Vars
+    // ================================================
+
+    private static final String OPERATOR_CLASSPATH = "/de/ledidious/mathyx/elemental/operator";
 
     private static CalcInterpreter INSTANCE;
 
     private final Map<String, Class<?>> availableSigns = new HashMap<>();
+
+    // ================================================
+    // Constructor
+    // ================================================
 
     public CalcInterpreter() {
     }
@@ -60,12 +68,11 @@ public class CalcInterpreter {
         }
 
         try {
-            final Iterator<Path> srcFileItr =
-                    Files.list(Paths.get(getClass().getResource("/de/ledidious/mathyx/elemental/operator").toURI())).iterator();
+            final URL operatorPackagePath = Objects.requireNonNull(getClass().getResource(OPERATOR_CLASSPATH));
+            final Iterator<Path> srcFileItr = Files.list(Paths.get(operatorPackagePath.toURI())).iterator();
 
             while (srcFileItr.hasNext()) {
                 final String classFileSuffix = ".class";
-                Class.forName("de.ledidious.mathyx.elemental.operator.BinaryOperator");
 
                 Path classFile = srcFileItr.next();
                 if (!classFile.toString().endsWith(classFileSuffix)) continue;
